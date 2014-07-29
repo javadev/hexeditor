@@ -135,7 +135,7 @@ class binEdit extends JComponent implements MouseListener, MouseMotionListener, 
       } else {
          this.jSbSource = false;
          this.jSB.setValue(0);
-         this.pushHObj(new edObj(0L, 0L, 2), "\tTry   Hexditor.jar with this   virtual file.\n  An applet cannot access a real  file nor the    clipboard.\n     The File menu,  Ctrl+X, Ctrl+C, & Ctrl+V are    therefore       inhibited.");
+         this.pushHObj(new edObj(0L, 0L, 2), "\tTry   Hexeditor.jar with this   virtual file.\n  An applet cannot access a real  file nor the    clipboard.\n     The File menu,  Ctrl+X, Ctrl+C, & Ctrl+V are    therefore       inhibited.");
       }
 
       this.focus();
@@ -869,7 +869,7 @@ class binEdit extends JComponent implements MouseListener, MouseMotionListener, 
          }
          break;
       case 71:
-         this.goTo(JOptionPane.showInputDialog(this, var8, "Hexditor.jar: GoTo", -1));
+         this.goTo(JOptionPane.showInputDialog(this, var8, "Hexeditor.jar: GoTo", -1));
          break;
       case 77:
          Long var9 = new Long(this.lastPos);
@@ -993,7 +993,7 @@ class binEdit extends JComponent implements MouseListener, MouseMotionListener, 
             this.InsDelB[var1 == 127?0:1].setSelected(true);
             this.InsDelTF.setEnabled(true);
             String var7 = this.fromClipboard(false);
-            if(JOptionPane.showConfirmDialog(this, this.InsDelOption, "Hexditor.jar: DEL/INS", 2) != 2) {
+            if(JOptionPane.showConfirmDialog(this, this.InsDelOption, "Hexeditor.jar: DEL/INS", 2) != 2) {
                label298: {
                   if(this.InsDelB[4].isSelected()) {
                      if(!this.isApplet && var7 != null && this.virtualSize + (long)var7.length() < Long.MAX_VALUE) {

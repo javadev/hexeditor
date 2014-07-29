@@ -7,7 +7,7 @@
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>Binary file editor</name>
-  <description>The java port of Underscore.js</description>
+  <description>The binary file editor</description>
   <url>https://github.com/javadev/hexeditor</url>
   
   <developers>
