@@ -1,0 +1,56 @@
+<html><body>
+<h2>Généralités</h2><hr>
+Hexditor.jar lit tout fichier jusqu'à 9 exa bytes (2^63-1) avec une occupation mémoire de moins de 32MiB en incluant le Java Runtime Environment.
+<br>Pour un fichier géant, la barre de défilement peut ne pas avoir une résolution suffisante pour accéder directement à la portion désirée.
+Il faut finir avec Page-Down/Page-Up et les boutons flèches.
+<p>Grâce à sa structure multi threads, vous pouvez lancer simultanément une recherche et une sauvegarde, tout en continuant à naviguer en lecture seule dans le fichier.
+<p>Le mode d'écriture est overwrite. Pour la plupart des fichiers binaires, il peut être dangereux de décaler une partie du code.
+Pour cette raison, une portion de code non modifiée mais pas exactement à la position originelle sera signalée par un fond grisé.
+Une insertion doit être explicite et ne peut être faite qu'avec la touche insertion.
+Soyez prudent avec les insertions imposantes, vous pouvez créer virtuellement un fichier géant qu'il sera ensuite impossible de sauvegarder (essayez d'insérer 2Ei par exemple).
+<p>Les modifications en cours sont signalées par du texte en rouge. Vous pouvez annuler les modifications. Vous pouvez refaire la dernière anulation.
+Un astérisque (*) après le nom du fichier signale qu'il y a au moins une modification.
+Notez que la pile de Undo et les aides colorées sont remise à zéro par une sauvegarde puisqu'il n'y a plus de différence entre le fichier et l'affichage.
+<p>Couper, copier & coller utilise le presse papier de l'OS. Une sélection dans la zone de texte est transférée sous forme de texte, mais a l'inconvénient de ne pas permettre de transférer les caractères non affichables.
+Une sélection dans la zone hexa est transférée sous forme de texte hexadécimal.
+La taille de la sélection est limitée par l'option de mémoire lors du lancement de la JVM (-Xms64m), mais la limitation du presse papier peut être plus faible.
+Comme le presse papier est partagé, vous pouvez importer/exporter des data depuis/vers n'importe quelle application.
+Notez toutefois que le retour chariot n'est pas toujours correctement transmit par le presse papier de windoz.
+<p>Les champs de saisi demandant une position acceptent les formats numériques tels que:
+<ul><li>Un entier quelconque (0, 10, +256, ...).<li>Un hexadécimal sans préfix (OxFF).<li>Un réel qui sera arrondi si nécessaire (1.024e3).
+<li>Un entier ou un réel avec un préfix SI (1.5k) (<a href="http://physics.nist.gov/cuu/Units/prefixes.html" target=blank>da, h, k, M, G, T, P, E</a>).
+<li>Un entier ou un réel avec un muliple binaire SI (1.024Ki) (<a href="http://physics.nist.gov/cuu/Units/binary.html" target=blank>Ki, Mi, Gi, Ti, Pi, Ei</a>).
+<li>Un pourcentage d'entier ou de réel (10.5%).</ul>
+<ol>Notes:<li>Les prefixes et les multiples binaires sont sensibles à la casse. Remarquez la différence entre 'k' et 'Ki'
+<li>Pour éviter les confusions,avec le préfix exa (E), il vaut mieux utiliser 'e' plutôt que 'E' pour séparer la mantisse de l'exposant.
+<li>Pourquoi prefix plutôt que suffix? Parce que c'est le préfixe de l'unité et pas le suffixe du nombre.</ol>
+
+<p>En bas à droite, la position du curseur est donnée par rapport au début du fichier, suivi de la position par rapport à la fin.
+Un clic sur le champ offset commute l'affichage entre décimal et hexadécimal.
+<p>&nbsp;</p>
+<h2>L'outil de recherche</h2><hr>
+<ul>
+<li>Le champ d'entrée accepte du texte, des chaines hexadécimales et plein d'autres formats.
+<br>Notez que la recherche d'un float ou un double est implémentée, mais c'est une mauvaise idée de l'utiliser, en effet la transcription binaire d'un réel est très rarement juste. Hexditor.jar recherchera les deux float ou double les plus proches.
+<li>La recherche de texte peut être insensible à la casse. Dans ce cas, elle est aussi insensible aux caractères accentués.
+Par exemple, si vous cherchez un mot contenant "A", les lettres "AaÀÁÂÃÄÅàáâãäå" seront valides, et plein d'autres encore, comme le @ ou le symbole de l'&#xC5;ngstr&ouml;m.
+<li>"Word size" est utile pour l'alignement des data.
+Si vous cherchez un code machine pour un processeur 64 bits, cela permet de ne trouver que les mots bien alignés.
+<br>Pour un fichier multimédia, un fichier compressé ou si vous ne savez pas, laissez ce champ sur "8 bytes".
+<li>Le champ "From" permet de choisir où commence la recherche. Laissé vide, la recherche commence à la position du curseur.
+A la fin de la recherche, le champ indique la position trouvée, ou sinon la fin du fichier.
+<li>BE & LE sont pour Big-Endian (ordre naturel) or Little-Endian (ordre Intel).
+<li>Dans un fichier aléatoire de 16MiB, la recherche d'un mot de 3 octets donne une occurrence.
+<br>Dans un fichier ASCII aléatoire de 16MiB la recherche d'un mot de 3 lettres minuscules pourrait déjà donner 57 occurrences.
+Mais un fichier ASCII n'est jamais aléatoire, essayez de trouver "xyz" ou "les" dans un texte en français...
+<br>Donc une recherche efficace nécessite une taille minimale de mot:
+</ul>
+<center><table border=1>
+<tr><th><center>Type de fichier et taille</center></th><th><center>caractères</center></th></tr>
+<tr><td>binary, 16MiB</td><td><center>3</center></td></tr>
+<tr><td>binary, 4GiB</td><td><center>4</center></td></tr>
+<tr><td>ASCII, 500KiB</td><td><center>5</center></td></tr>
+</table></center>
+Pour une recherche de texte avec un autre codage, essayez <a href="http://webhex.net/" target=blank>http://webhex.net/</a>.
+<h2>Les raccourcis</h2><hr>
+A quelques exceptions près, les raccourcis sont ceux de LibreOffice.<p>

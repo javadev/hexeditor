@@ -1,0 +1,59 @@
+<html><body>
+<h2>Generalities</h2><hr>
+Hexditor.jar works with any file of up to 9 exa bytes (2^63-1) with a memory footprint less than 32MiB including the java runtime environment.
+<br>For a giant file, the scrollbar cannot have a sufficient granularity, you can just approach the requested portion, then you finish with the Page-Down/Page-Up and the arrows keys.
+<p>Thanks to the multi threads structure of Hexditor.jar, you can start a search while saving or vis versa.
+During a save or/and a search, you can continue to navigate through the file for reading, but not of course for writing.
+<p>The write mode is only overwrite mode. For most of binary files, it may be dangerous to slide a portion of code.
+For the same reason, data not modified but not exactly at the same position are shown with a gray background.
+An insert must be explicit and must be done with the insert key.
+Be careful with big inserts, you can virtually create a giant file, but then it may be imposssible to save it (try insert 2Ei for exemple).
+<p>Modifications done on the file are shown with red colored texts.
+An asterix (*) after the file name shows that there is at least one modification. You can undo the modifications. You can redo at least one undo.
+Note that the undo stack and the coloration help are cleared by a save, because there is no difference between the file and the screen.
+<p>Cut/copy/paste use the system clipboard. A selection in the text area is stored as text but do not allow the selection of some isoControl characters.
+A selection in the nibble area is stored as hexa string.
+The limitation for a selection size is limited by the memory option of the java VM (-Xms64m), but the clipboard limitation may be lower.
+As the clipboard is shared, you can import/export data in text format from/to other applications.
+Note that the carriage return characters are not well transferred by the windoz clipboard. 
+<p>Field asking for a position in the file may be a positive decimal number like:
+<ul><li>Any integer (0, 10, +256, ...).<li>Hexa strings (OxFF). Capital or small letters, prefix not allowed.<li>Float rounded as necessary (1.024e3).
+<li>Integer or Float with SI prefix (1.5k) (<a href="http://physics.nist.gov/cuu/Units/prefixes.html" target=blank>da, h, k, M, G, T, P, E</a>).
+<li>Integer or Float with SI  binary multiple (1.024Ki) (<a href="http://physics.nist.gov/cuu/Units/binary.html" target=blank>Ki, Mi, Gi, Ti, Pi, Ei</a>).
+<li>Integer or Float followed by % (10%).</ul>
+<ol>Notes:<li>prefixes & binary multiples are case sensitive, see the difference beween 'k' and 'Ki'
+<li>To avoid confusion with the exa prefix (E), 'e' is better than 'E' to separate the exponent from the significant.
+<li>Why prefix instead of suffix? Because this is the prefix of the unit, not the suffix of the number.</ol>
+<p>The bottom right corner shows the offset position from the beginning of the file, followed by the offset to the end of the file.<br>
+A click on offset field toggles between decimal and hexadecimal view.
+
+<p>&nbsp;</p>
+<h2>The search tool</h2><hr>
+<ul>
+<li>Entry field allows text, Hexa string or many other typed data.
+<br>Note that the search of a float or a double is implemented but use it is a bad idea. The binary transcription of a real is rarely the exact decimal value. Hexditor will search for the two nearest float or double.
+The binary translation is very rarely the exact transcription of the decimal representation.
+There is always a residual error of ± one ulp.
+<li>Text search can be case insensitive. Case insensitive discards the case but also the accents.
+For example if you search a word containing an "A" letter, these letters "Aa¿¡¬√ƒ≈‡·‚„‰Â" are taken into account and many more, like "@" or the &#xC5;ngstr&ouml;m symbol.
+<li>"Word size" is used for word alignment.
+If you search an instruction for a 64 bits processor, this option allows you to find only well aligned data.
+<br>For multimedia data, compressed data or any word document, left it at "8 bits".
+<li>With "From" field, you select the starting point in the file.
+Left blank, the search will start at the current cursor position.
+When search has finished, this field shows the found position or the end of the file.
+<li>BE & LE are for Big-Endian (natural order) or Little-Endian (Intel order).
+<li>In a 16MiB pseudo random binary file, a search of a 3 bytes word will find 1 occurrence.
+In a 16MiB pseudo random ASCII file, a search of a 3 lowercase letters may find something like 57 occurrences.
+But an ASCII file is never a pseudo random file. For example, try to find "xyz" or "the" in an English text file...
+<br>So an efficient search needs a minimum word size:
+</ul>
+<center><table border=1>
+<tr><th><center>Files type & size</center></th><th><center>characters</center></th></tr>
+<tr><td>binary, 16MiB</td><td><center>3</center></td></tr>
+<tr><td>binary, 4GiB</td><td><center>4</center></td></tr>
+<tr><td>ASCII, 500KiB</td><td><center>5</center></td></tr>
+</table></center>
+For text search with other charsets, try <a href="http://webhex.net/" target=blank>http://webhex.net/</a>.
+<h2>The shortcuts</h2><hr>
+The main shortcuts are as the LibreOffice's shortcuts.<p>
