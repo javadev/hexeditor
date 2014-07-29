@@ -16,7 +16,7 @@ import javax.swing.UIManager;
 public class UI extends JApplet {
 
    private static final String link = "https://github.com/javadev/hexeditor";
-   private static final String appName = "hexditor.jar";
+   private static final String appName = "hexeditor.jar";
    private static final String version = "2014-07-29";
    private static boolean applet = false;
    private static JPanel jP = new JPanel(new BorderLayout());
@@ -68,8 +68,8 @@ public class UI extends JApplet {
 
    private static void bugReport() {
       try {
-         System.setErr(new PrintStream(new FileOutputStream(new File(System.getProperty("user.dir"), "Hexditor.jar_BugReport.txt"))));
-         StringBuffer var1 = new StringBuffer("if you find errors, feel free to send me a mail with a short explaination and this file at: @T \r\n\r\nHexditor.jar 2012/12/12\r\n");
+         System.setErr(new PrintStream(new FileOutputStream(new File(System.getProperty("user.dir"), "Hexeditor.jar_BugReport.txt"))));
+         StringBuffer var1 = new StringBuffer("if you find errors, feel free to send me a mail with a short explaination and this file at: @T \r\n\r\nHexeditor.jar 2014-07-29\r\n");
          Properties var2 = System.getProperties();
          Enumeration var3 = var2.propertyNames();
 
