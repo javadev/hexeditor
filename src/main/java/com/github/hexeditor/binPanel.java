@@ -138,10 +138,14 @@ public class binPanel extends JPanel implements ActionListener, ItemListener, Ca
       ++var3.gridy;
       var2.add(this.stat, var3);
       this.fJCB[2].setSelectedIndex(6);
-      if(var1 != null && 0 < var1.length && var1[0].equals("-slave")) {
-         (this.slave = new slaveT()).setDaemon(true);
-         this.slave.hexV = this.hexV;
-         this.slave.start();
+      if(var1 != null && 0 < var1.length) {
+         if (var1[0].equals("-slave")) {
+            (this.slave = new slaveT()).setDaemon(true);
+            this.slave.hexV = this.hexV;
+            this.slave.start();
+         } else {
+            this.hexV.loadFile(new java.io.File(var1[0]));
+         }
       }
 
       return var2;
