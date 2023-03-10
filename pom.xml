@@ -35,25 +35,25 @@
   </properties>
 
   <ciManagement>
-    <system>Travis CI</system>
-    <url>https://travis-ci.org/javadev/hexeditor</url>
+    <system>GitHub Actions</system>
+    <url>https://github.com/javadev/hexeditor/actions</url>
   </ciManagement>
 
   <issueManagement>
     <system>GitHub Issues</system>
-    <url>https://github.com/javadev/hexeditor</url>
+    <url>https://github.com/javadev/hexeditor/issues</url>
   </issueManagement>
 
   <build>
-        <finalName>${project.artifactId}</finalName>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
+        <version>3.11.0</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>1.8</source>
+          <target>1.8</target>
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
@@ -161,14 +161,5 @@
           </configuration>
         </plugin>
     </plugins>
-  </build>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  
+  </build>  
 </project>

@@ -1,7 +1,7 @@
 hexeditor
 =========
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.javadev/hexeditor.svg)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.javadev%22%20AND%20a%3A%22hexeditor%22)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.javadev/hexeditor?style=flat-square)](https://central.sonatype.com/artifact/com.github.javadev/hexeditor/1.0)
 
 The binary file editor.
 

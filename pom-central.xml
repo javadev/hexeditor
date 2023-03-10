@@ -35,13 +35,13 @@
   </properties>
 
   <ciManagement>
-    <system>Travis CI</system>
-    <url>https://travis-ci.org/javadev/hexeditor</url>
+    <system>GitHub Actions</system>
+    <url>https://github.com/javadev/hexeditor/actions</url>
   </ciManagement>
 
   <issueManagement>
     <system>GitHub Issues</system>
-    <url>https://github.com/javadev/hexeditor</url>
+    <url>https://github.com/javadev/hexeditor/issues</url>
   </issueManagement>
 
   <build>
@@ -49,10 +49,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
+        <version>3.11.0</version>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>1.8</source>
+          <target>1.8</target>
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
@@ -96,7 +96,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-gpg-plugin</artifactId>
-          <version>1.4</version>
+          <version>1.6</version>
           <executions>
             <execution>
               <id>sign-artifacts</id>
